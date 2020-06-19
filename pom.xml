@@ -8,5 +8,9 @@
     <artifactId>web-emt</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <modules>
+        <module>shared-kernel</module>
+    </modules>
+
 
 </project>
