@@ -10,6 +10,9 @@
 
     <modules>
         <module>shared-kernel</module>
+        <module>employee-management</module>
+        <module>task-management</module>
+        <module>job-management</module>
     </modules>
 
 
