@@ -6,9 +6,7 @@ import mk.metalkat.webemt.sharedkernel.domain.base.AbstractEntity;
 import mk.metalkat.webemt.sharedkernel.domain.base.DomainObjectId;
 
 import javax.persistence.*;
-import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 @Entity
 @Table(name = "tasks")
@@ -33,7 +31,10 @@ public class Task extends AbstractEntity<TaskId> {
     private LocalDate dueDate;
 
     @Column(name = "estimated_time")
-    private long estimatedTime;
+    private Long estimatedTime;
+
+    @Column(name = "tracked_time")
+    private Long trackedTime;
 
     @Column(name = "is_finished", nullable = false)
     private boolean isFinished;
@@ -46,6 +47,7 @@ public class Task extends AbstractEntity<TaskId> {
         setDueDate(dueDate);
         setEstimatedTime(estimatedTime);
         setFinished(false);
+        setTrackedTime(0L);
     }
 
     public void setName(String name) {
@@ -64,11 +66,15 @@ public class Task extends AbstractEntity<TaskId> {
         this.dueDate = dueDate;
     }
 
-    public void setEstimatedTime(long estimatedTime) {
+    public void setEstimatedTime(Long estimatedTime) {
         this.estimatedTime = estimatedTime;
     }
 
     public void setFinished(boolean finished) {
         isFinished = finished;
+    }
+
+    public void setTrackedTime(Long trackedTime) {
+        this.trackedTime = trackedTime;
     }
 }

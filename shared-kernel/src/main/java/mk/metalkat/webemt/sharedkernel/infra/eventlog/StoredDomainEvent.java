@@ -46,7 +46,7 @@ public class StoredDomainEvent {
     StoredDomainEvent(@NonNull DomainEvent domainEvent, @NonNull ObjectMapper objectMapper) {
         Objects.requireNonNull(domainEvent, "domainEvent must not be null");
         Objects.requireNonNull(objectMapper, "objectMapper must not be null");
-        occurredOn = domainEvent.occurredOn();
+        occurredOn = domainEvent.createdAt();
         domainEventClass = domainEvent.getClass();
         domainEventClassName = domainEventClass.getName();
         try {
