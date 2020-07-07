@@ -1,6 +1,5 @@
 package mk.metalkat.webemt.jobmanagement.domain.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter

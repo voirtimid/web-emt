@@ -31,11 +31,24 @@ public class Job extends AbstractEntity<JobId> {
     @AttributeOverride(name = "id", column = @Column(name = "employee_id", nullable = false))
     private EmployeeId employeeId;
 
-    public Job(@NonNull EmployeeId employeeId, @NonNull Instant createdAt) {
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "name", column = @Column(name = "company_name", nullable = false)),
+            @AttributeOverride(name = "address", column = @Column(name = "company_address", nullable = false)),
+            @AttributeOverride(name = "number", column = @Column(name = "contact_number", nullable = false))
+    })
+    private Company company;
+
+    public Job(@NonNull EmployeeId employeeId, @NonNull Instant createdAt, Company company) {
         super(DomainObjectId.randomId(JobId.class));
         setEmployeeId(employeeId);
         setCreatedAt(createdAt);
+        setCompany(company);
         this.jobEntries = new HashSet<>();
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     public JobEntry addJobEntry(@NonNull Task task) {

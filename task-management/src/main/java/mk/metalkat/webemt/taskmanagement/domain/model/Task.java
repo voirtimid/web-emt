@@ -50,6 +50,13 @@ public class Task extends AbstractEntity<TaskId> {
         setTrackedTime(0L);
     }
 
+    public void addTimeToTrackedMinutes(Long trackedTime) {
+        if (trackedTime < 0) {
+            throw new RuntimeException("time cannot be 0");
+        }
+        setTrackedTime(getTrackedTime() + trackedTime);
+    }
+
     public void setName(String name) {
         this.name = name;
     }

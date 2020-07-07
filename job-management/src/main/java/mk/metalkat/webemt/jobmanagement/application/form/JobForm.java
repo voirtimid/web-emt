@@ -18,4 +18,6 @@ public class JobForm implements Serializable {
     private EmployeeId employeeId;
 
     private List<JobEntryForm> jobEntries = new ArrayList<>();
+
+    private CompanyForm companyForm;
 }
