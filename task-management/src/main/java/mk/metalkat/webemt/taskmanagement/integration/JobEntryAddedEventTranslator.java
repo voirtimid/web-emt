@@ -17,7 +17,8 @@ public class JobEntryAddedEventTranslator implements RemoteEventTranslator {
 
     @Override
     public boolean supports(StoredDomainEvent storedDomainEvent) {
-        return storedDomainEvent.domainEventClassName().equals("mk.metalkat.webemt.taskmanagement.integration.JobEntryAddedEvent");
+        return storedDomainEvent.domainEventClassName()
+                .equals("mk.metalkat.webemt.jobmanagement.domain.event.JobEntryAdded");
     }
 
     @Override

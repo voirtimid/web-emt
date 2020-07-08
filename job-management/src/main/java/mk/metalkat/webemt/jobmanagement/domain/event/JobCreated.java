@@ -6,9 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import mk.metalkat.webemt.jobmanagement.domain.model.EmployeeId;
-import mk.metalkat.webemt.jobmanagement.domain.model.JobEntryId;
 import mk.metalkat.webemt.jobmanagement.domain.model.JobId;
-import mk.metalkat.webemt.jobmanagement.domain.model.TaskId;
 import mk.metalkat.webemt.sharedkernel.domain.base.DomainEvent;
 import org.springframework.lang.NonNull;
 

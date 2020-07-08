@@ -26,6 +26,7 @@ public class RemoteEventProcessor {
                                 Map<String, RemoteEventTranslator> remoteEventTranslators,
                                 ApplicationEventPublisher applicationEventPublisher,
                                 TransactionTemplate transactionTemplate) {
+        System.out.println("RemoteEventProcessor constructor");
         this.processedRemoteEventRepository = processedRemoteEventRepository;
         this.remoteEventLogs = remoteEventLogs;
         this.remoteEventTranslators = remoteEventTranslators;
@@ -47,6 +48,7 @@ public class RemoteEventProcessor {
     }
 
     private long getLastProcessedId(@NonNull RemoteEventLogService remoteEventLogService) {
+        System.out.println("getLast proccessId");
         return processedRemoteEventRepository.findById(remoteEventLogService.source())
                 .map(ProcessedRemoteEvent::lastProcessedEventId)
                 .orElse(0L);
@@ -54,6 +56,7 @@ public class RemoteEventProcessor {
 
     private void processEvents(@NonNull RemoteEventLogService remoteEventLogService,
                                @NonNull List<StoredDomainEvent> events) {
+        System.out.println("procces event");
         events.forEach(event -> {
             transactionTemplate.execute(new TransactionCallbackWithoutResult() {
                 @Override
@@ -70,6 +73,7 @@ public class RemoteEventProcessor {
     }
 
     private void publishEvent(@NonNull StoredDomainEvent event) {
+        System.out.println("private void publishEvent(@NonNull StoredDomainEvent event)");
         remoteEventTranslators.values().stream()
                 .filter(translator -> translator.supports(event))
                 .findFirst()
